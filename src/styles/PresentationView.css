@@ -1,0 +1,498 @@
+/* Presentation View Styles */
+.presentation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--dark-brown) 0%, #2C1810 100%);
+  color: var(--soft-white);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Loading and Error States */
+.presentation-loading,
+.presentation-error,
+.presentation-empty {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, var(--dark-brown) 0%, #2C1810 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-content,
+.error-content,
+.empty-content {
+  text-align: center;
+  color: var(--soft-white);
+}
+
+.loading-spinner-large {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 2rem;
+}
+
+.loading-text {
+  font-size: 1.2rem;
+  color: var(--gold);
+}
+
+.error-icon,
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.error-title,
+.empty-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+.error-message,
+.empty-message {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  opacity: 0.8;
+}
+
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.retry-presentation-btn,
+.exit-presentation-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-presentation-btn {
+  background: var(--gold);
+  color: var(--dark-brown);
+}
+
+.exit-presentation-btn {
+  background: transparent;
+  color: var(--soft-white);
+  border: 2px solid var(--soft-white);
+}
+
+.retry-presentation-btn:hover,
+.exit-presentation-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+/* Exit Button */
+.exit-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--soft-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exit-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Controls */
+.presentation-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  z-index: 1001;
+  transform: translateY(-50%);
+}
+
+.control-btn {
+  width: 60px;
+  height: 60px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--soft-white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.control-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.control-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.play-pause-btn {
+  font-size: 1.2rem;
+}
+
+/* Slide Container */
+.slide-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 2rem 6rem;
+  overflow: hidden;
+}
+
+.wish-slide {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  animation: slideIn 0.8s ease-out;
+}
+
+.slide-avatar {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.slide-name {
+  font-size: 2.5rem;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.slide-name.bengali-text {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 2.2rem;
+}
+
+.slide-message {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.slide-message.bengali-text {
+  font-family: 'Noto Serif Bengali', serif;
+  font-size: 1.4rem;
+  line-height: 2;
+}
+
+/* Slide Images */
+.slide-images {
+  margin-top: 3rem;
+}
+
+.slide-images-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.slide-images-grid.single {
+  justify-content: center;
+}
+
+.slide-images-grid.multiple {
+  justify-content: center;
+}
+
+.slide-image-container {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.slide-image-container:hover {
+  transform: scale(1.05);
+}
+
+.slide-images-grid.single .slide-image-container {
+  max-width: 500px;
+  max-height: 400px;
+}
+
+.slide-images-grid.multiple .slide-image-container {
+  max-width: 300px;
+  max-height: 250px;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Progress Indicators */
+.progress-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1001;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, #FFA500 100%);
+  transition: width 0.1s linear;
+  border-radius: 2px;
+}
+
+.slide-dots {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 400px;
+}
+
+.slide-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slide-dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+.slide-dot:hover {
+  background: rgba(255, 215, 0, 0.7);
+}
+
+.slide-counter {
+  color: var(--gold);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Instructions */
+.presentation-instructions {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 1001;
+}
+
+.instruction-item {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exit-btn {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .presentation-controls {
+    padding: 0 1rem;
+  }
+
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .slide-container {
+    padding: 3rem 1rem 5rem;
+  }
+
+  .slide-name {
+    font-size: 2rem;
+  }
+
+  .slide-name.bengali-text {
+    font-size: 1.8rem;
+  }
+
+  .slide-message {
+    font-size: 1.2rem;
+  }
+
+  .slide-message.bengali-text {
+    font-size: 1.1rem;
+  }
+
+  .slide-images-grid {
+    gap: 1rem;
+  }
+
+  .slide-images-grid.single .slide-image-container {
+    max-width: 350px;
+    max-height: 280px;
+  }
+
+  .slide-images-grid.multiple .slide-image-container {
+    max-width: 200px;
+    max-height: 160px;
+  }
+
+  .progress-bar {
+    width: 200px;
+  }
+
+  .presentation-instructions {
+    bottom: 1rem;
+    left: 1rem;
+  }
+
+  .instruction-item {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-avatar {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-name {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-name.bengali-text {
+    font-size: 1.4rem;
+  }
+
+  .slide-message {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .slide-message.bengali-text {
+    font-size: 0.95rem;
+  }
+
+  .slide-images-grid.single .slide-image-container {
+    max-width: 280px;
+    max-height: 220px;
+  }
+
+  .slide-images-grid.multiple .slide-image-container {
+    max-width: 150px;
+    max-height: 120px;
+  }
+
+  .progress-indicators {
+    bottom: 1rem;
+  }
+
+  .progress-bar {
+    width: 150px;
+    height: 3px;
+  }
+
+  .slide-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .slide-counter {
+    font-size: 0.9rem;
+  }
+
+  .presentation-instructions {
+    display: none;
+  }
+}
