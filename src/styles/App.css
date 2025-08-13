@@ -16,31 +16,44 @@
 
 /* Header Styles */
 .header {
-  background: linear-gradient(135deg, var(--maroon) 0%, #A0002A 100%);
+  background: linear-gradient(135deg, var(--deep-maroon) 0%, var(--maroon) 50%, var(--burgundy) 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
   color: var(--gold);
-  padding: 2rem 0;
+  padding: 3rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 20px var(--shadow);
+  box-shadow: 
+    0 8px 32px var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .header::before {
-  content: '🌸';
+  content: '💍';
   position: absolute;
-  top: 20px;
-  left: 2rem;
-  font-size: 2rem;
-  animation: float 3s ease-in-out infinite;
+  top: 25px;
+  left: 3rem;
+  font-size: 3.5rem;
+  animation: ring-sparkle 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+  z-index: 2;
 }
 
 .header::after {
-  content: '🌸';
+  content: '💍';
   position: absolute;
-  top: 20px;
-  right: 2rem;
-  font-size: 2rem;
-  animation: float 3s ease-in-out infinite 1.5s;
+  top: 25px;
+  right: 3rem;
+  font-size: 3.5rem;
+  animation: ring-sparkle 3s ease-in-out infinite 1.5s;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+  z-index: 2;
 }
 
 .header-content {
@@ -48,16 +61,101 @@
   z-index: 1;
 }
 
-.bengali-subtitle {
+/* Ring decorations */
+.ring-decorations {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.left-decoration,
+.right-decoration {
+  position: absolute;
+  top: 20px;
+}
+
+.left-decoration {
+  left: 1rem;
+}
+
+.right-decoration {
+  right: 1rem;
+}
+
+.left-decoration .sparkle-1,
+.right-decoration .sparkle-1 {
+  position: absolute;
   font-size: 1.5rem;
-  margin: 0.5rem 0;
+  animation: sparkle-orbit 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+}
+
+.left-decoration .sparkle-2,
+.right-decoration .sparkle-2 {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: sparkle-orbit 3s ease-in-out infinite 1s;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
+}
+
+.left-decoration .sparkle-3,
+.right-decoration .sparkle-3 {
+  position: absolute;
+  font-size: 1.8rem;
+  animation: sparkle-orbit 5s ease-in-out infinite 2s;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+}
+
+/* Position sparkles around the rings */
+.left-decoration .sparkle-1 { top: -20px; left: 40px; }
+.left-decoration .sparkle-2 { top: 60px; left: -10px; }
+.left-decoration .sparkle-3 { top: 30px; left: 70px; }
+
+.right-decoration .sparkle-1 { top: -20px; right: 40px; }
+.right-decoration .sparkle-2 { top: 60px; right: -10px; }
+.right-decoration .sparkle-3 { top: 30px; right: 70px; }
+
+.bengali-subtitle {
+  font-size: 1.8rem;
+  margin: 1rem 0;
   opacity: 0.95;
+  font-weight: 600;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.bengali-subtitle::before,
+.bengali-subtitle::after {
+  content: '❤️';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8em;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.bengali-subtitle::before {
+  left: -40px;
+  animation-delay: 0.5s;
+}
+
+.bengali-subtitle::after {
+  right: -40px;
+  animation-delay: 1s;
 }
 
 .english-subtitle {
-  font-size: 1rem;
-  opacity: 0.85;
-  font-weight: 300;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 1px;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
 }
 
 /* Navigation Tabs */
@@ -70,11 +168,32 @@
 
 .nav-container {
   display: flex;
-  background: var(--soft-white);
+  background: linear-gradient(145deg, var(--soft-white) 0%, var(--blush) 100%);
   border-radius: 50px;
-  padding: 4px;
-  box-shadow: 0 4px 20px var(--shadow);
+  padding: 6px;
+  box-shadow: 
+    0 8px 32px var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 0 1px rgba(255, 215, 0, 0.1);
   overflow: hidden;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.nav-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--gold), var(--rose-gold), var(--gold));
+  border-radius: inherit;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
 }
 
 .nav-tab {
@@ -101,10 +220,26 @@
 }
 
 .nav-tab.active {
-  background: linear-gradient(135deg, var(--maroon) 0%, #A0002A 100%);
+  background: linear-gradient(135deg, var(--maroon) 0%, var(--burgundy) 50%, var(--deep-maroon) 100%);
   color: var(--soft-white);
-  box-shadow: 0 4px 15px rgba(128, 0, 0, 0.3);
-  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(128, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  position: relative;
+}
+
+.nav-tab.active::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--gold), transparent, var(--gold));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
 }
 
 .nav-tab-icon {
@@ -137,28 +272,33 @@
 
 .bg-mandala {
   position: absolute;
-  width: 300px;
-  height: 300px;
-  opacity: 0.03;
+  width: 400px;
+  height: 400px;
+  opacity: 0.04;
   background-image: 
-    radial-gradient(circle at center, transparent 20%, var(--maroon) 22%, transparent 24%),
-    radial-gradient(circle at center, transparent 40%, var(--maroon) 42%, transparent 44%),
-    radial-gradient(circle at center, transparent 60%, var(--maroon) 62%, transparent 64%);
+    radial-gradient(circle at center, transparent 15%, var(--maroon) 17%, transparent 19%),
+    radial-gradient(circle at center, transparent 35%, var(--gold) 37%, transparent 39%),
+    radial-gradient(circle at center, transparent 55%, var(--rose-gold) 57%, transparent 59%),
+    radial-gradient(circle at center, transparent 75%, var(--maroon) 77%, transparent 79%);
   border-radius: 50%;
-  animation: rotate 30s linear infinite;
+  animation: rotate 45s linear infinite;
+  filter: blur(0.5px);
 }
 
 .bg-mandala-1 {
-  top: 10%;
-  right: -10%;
+  top: 5%;
+  right: -15%;
   animation-direction: normal;
+  opacity: 0.06;
 }
 
 .bg-mandala-2 {
-  bottom: 10%;
-  left: -10%;
+  bottom: 5%;
+  left: -15%;
   animation-direction: reverse;
-  opacity: 0.02;
+  opacity: 0.03;
+  width: 350px;
+  height: 350px;
 }
 
 .bg-flowers {
@@ -169,39 +309,112 @@
 
 .flower {
   position: absolute;
-  font-size: 1.5rem;
-  opacity: 0.1;
-  animation: float 4s ease-in-out infinite;
+  font-size: 2rem;
+  opacity: 0.15;
+  animation: gentle-sway 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.2));
 }
 
 .flower-1 {
-  top: 20%;
-  left: 10%;
+  top: 15%;
+  left: 8%;
   animation-delay: 0s;
+  font-size: 1.8rem;
+}
+
+.flower-1::before {
+  content: '🌸';
 }
 
 .flower-2 {
-  top: 60%;
-  right: 15%;
-  animation-delay: 1s;
+  top: 65%;
+  right: 12%;
+  animation-delay: 2s;
+  font-size: 2.2rem;
+}
+
+.flower-2::before {
+  content: '🌹';
 }
 
 .flower-3 {
-  top: 80%;
-  left: 20%;
-  animation-delay: 2s;
+  top: 85%;
+  left: 25%;
+  animation-delay: 4s;
+  font-size: 1.6rem;
+}
+
+.flower-3::before {
+  content: '🌺';
 }
 
 .flower-4 {
-  top: 40%;
-  left: 80%;
-  animation-delay: 3s;
+  top: 35%;
+  left: 85%;
+  animation-delay: 1s;
+  font-size: 2rem;
+}
+
+.flower-4::before {
+  content: '💐';
 }
 
 .flower-5 {
-  top: 15%;
-  left: 60%;
-  animation-delay: 1.5s;
+  top: 10%;
+  left: 65%;
+  animation-delay: 3s;
+  font-size: 1.7rem;
+}
+
+.flower-5::before {
+  content: '🌷';
+}
+
+/* Add romantic floating hearts */
+.flower-1::after {
+  content: '💕';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 0.8rem;
+  animation: float 4s ease-in-out infinite 1s;
+  opacity: 0.3;
+}
+
+.flower-3::after {
+  content: '💖';
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  font-size: 0.9rem;
+  animation: float 5s ease-in-out infinite 2s;
+  opacity: 0.25;
+}
+
+/* Romantic floating elements */
+.romantic-elements {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 1.2rem;
+  opacity: 0.1;
+  animation: float 8s ease-in-out infinite;
+  color: var(--rose-gold);
+  filter: drop-shadow(0 0 8px rgba(232, 180, 184, 0.3));
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0.15;
+  animation: sparkle 3s ease-in-out infinite;
+  color: var(--gold);
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));
 }
 
 @keyframes rotate {
@@ -211,11 +424,59 @@
 
 /* Responsive Navigation */
 @media (max-width: 768px) {
-  .header::before,
-  .header::after {
-    font-size: 1.5rem;
-    top: 15px;
+  .header {
+    padding: 2.5rem 0;
   }
+  
+  .header::before {
+    font-size: 2.5rem;
+    top: 20px;
+    left: 1rem;
+  }
+  
+  .header::after {
+    font-size: 2.5rem;
+    top: 20px;
+    right: 1rem;
+  }
+  
+  .app-title::after {
+    right: -20px;
+    font-size: 1rem;
+  }
+  
+  .bengali-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .bengali-subtitle::before,
+  .bengali-subtitle::after {
+    display: none;
+  }
+  
+  .left-decoration,
+  .right-decoration {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .left-decoration .sparkle-1,
+  .left-decoration .sparkle-2,
+  .left-decoration .sparkle-3,
+  .right-decoration .sparkle-1,
+  .right-decoration .sparkle-2,
+  .right-decoration .sparkle-3 {
+    font-size: 0.9rem;
+  }
+  
+  /* Adjust sparkle positions for mobile */
+  .left-decoration .sparkle-1 { top: -15px; left: 30px; }
+  .left-decoration .sparkle-2 { top: 50px; left: -5px; }
+  .left-decoration .sparkle-3 { top: 25px; left: 55px; }
+  
+  .right-decoration .sparkle-1 { top: -15px; right: 30px; }
+  .right-decoration .sparkle-2 { top: 50px; right: -5px; }
+  .right-decoration .sparkle-3 { top: 25px; right: 55px; }
   
   .nav-tab {
     padding: 0.8rem 1rem;
@@ -230,36 +491,81 @@
     font-size: 1.2rem;
   }
   
-  .bengali-subtitle {
-    font-size: 1.2rem;
-  }
-  
   .page-container {
     padding: 0 0.5rem;
   }
 
   .bg-mandala {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
   }
 
   .flower {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+  }
+  
+  .floating-heart {
+    font-size: 1rem;
+  }
+  
+  .sparkle {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
+  }
+  
+  .header::before {
+    font-size: 2rem;
+    top: 15px;
+    left: 0.5rem;
+  }
+  
+  .header::after {
+    font-size: 2rem;
+    top: 15px;
+    right: 0.5rem;
   }
   
   .app-title {
     font-size: 1.8rem;
   }
   
-  .bengali-subtitle {
-    font-size: 1rem;
+  .app-title::after {
+    right: -15px;
+    font-size: 0.9rem;
   }
+  
+  .bengali-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .left-decoration,
+  .right-decoration {
+    left: 0.2rem;
+    right: 0.2rem;
+  }
+  
+  .left-decoration .sparkle-1,
+  .left-decoration .sparkle-2,
+  .left-decoration .sparkle-3,
+  .right-decoration .sparkle-1,
+  .right-decoration .sparkle-2,
+  .right-decoration .sparkle-3 {
+    font-size: 0.7rem;
+  }
+  
+  /* Further adjust sparkle positions for small mobile */
+  .left-decoration .sparkle-1 { top: -10px; left: 25px; }
+  .left-decoration .sparkle-2 { top: 40px; left: -3px; }
+  .left-decoration .sparkle-3 { top: 20px; left: 45px; }
+  
+  .right-decoration .sparkle-1 { top: -10px; right: 25px; }
+  .right-decoration .sparkle-2 { top: 40px; right: -3px; }
+  .right-decoration .sparkle-3 { top: 20px; right: 45px; }
   
   .nav-container {
     margin: 0 0.5rem;

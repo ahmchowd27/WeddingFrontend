@@ -85,11 +85,21 @@ function App() {
           <div className="bg-mandala bg-mandala-1"></div>
           <div className="bg-mandala bg-mandala-2"></div>
           <div className="bg-flowers">
-            <div className="flower flower-1">🌸</div>
-            <div className="flower flower-2">🌺</div>
-            <div className="flower flower-3">🌼</div>
-            <div className="flower flower-4">🌻</div>
-            <div className="flower flower-5">🌷</div>
+            <div className="flower flower-1"></div>
+            <div className="flower flower-2"></div>
+            <div className="flower flower-3"></div>
+            <div className="flower flower-4"></div>
+            <div className="flower flower-5"></div>
+          </div>
+          
+          {/* Floating romantic elements */}
+          <div className="romantic-elements">
+            <div className="floating-heart" style={{top: '20%', left: '5%', animationDelay: '0s'}}>💝</div>
+            <div className="floating-heart" style={{top: '70%', right: '10%', animationDelay: '2s'}}>💗</div>
+            <div className="floating-heart" style={{top: '50%', left: '90%', animationDelay: '4s'}}>💓</div>
+            <div className="sparkle" style={{top: '30%', left: '20%', animationDelay: '1s'}}>✨</div>
+            <div className="sparkle" style={{top: '80%', right: '25%', animationDelay: '3s'}}>⭐</div>
+            <div className="sparkle" style={{top: '15%', right: '40%', animationDelay: '5s'}}>💫</div>
           </div>
         </div>
       </div>

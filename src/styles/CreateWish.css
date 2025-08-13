@@ -11,10 +11,35 @@
 }
 
 .bengali-greeting {
-  font-size: 2rem;
-  color: var(--maroon);
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, var(--maroon) 0%, var(--burgundy) 50%, var(--deep-maroon) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
   font-weight: 600;
+  text-shadow: 0 0 20px rgba(128, 0, 0, 0.1);
+  position: relative;
+}
+
+.bengali-greeting::before {
+  content: '🎊';
+  position: absolute;
+  left: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: gentle-sway 3s ease-in-out infinite;
+}
+
+.bengali-greeting::after {
+  content: '🎊';
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: gentle-sway 3s ease-in-out infinite 1.5s;
 }
 
 .english-subtitle {
@@ -25,11 +50,41 @@
 
 /* Form Styles */
 .wish-form {
-  background: var(--soft-white);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px var(--shadow);
-  border: 1px solid rgba(232, 180, 184, 0.2);
+  background: linear-gradient(145deg, var(--soft-white) 0%, var(--blush) 100%);
+  padding: 2.5rem;
+  border-radius: 25px;
+  box-shadow: 
+    0 15px 35px var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.wish-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--gold), var(--rose-gold), var(--champagne), var(--gold));
+  border-radius: inherit;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+.wish-form::after {
+  content: '💕';
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: float 3s ease-in-out infinite;
 }
 
 .form-group {

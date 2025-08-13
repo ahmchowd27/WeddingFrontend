@@ -2,6 +2,7 @@
   "name": "weddingwishcraft-frontend",
   "version": "1.0.0",
   "description": "WeddingWishCraft Frontend - Bengali Wedding Wishes App",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",

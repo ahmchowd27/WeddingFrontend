@@ -27,8 +27,22 @@ const Header = () => {
       <header className="header">
         <div className="header-content">
           <h1 className="app-title">WeddingWishCraft</h1>
-          <div className="bengali-subtitle bengali-text">শুভ বিবাহ</div>
-          <div className="english-subtitle">Bengali Wedding Wishes</div>
+          <div className="bengali-subtitle bengali-text">Sheema And Rayhan</div>
+          <div className="english-subtitle">Send Your Wishes</div>
+        </div>
+        
+        {/* Additional decorative elements around rings */}
+        <div className="ring-decorations">
+          <div className="left-decoration">
+            <span className="sparkle-1">✨</span>
+            <span className="sparkle-2">⭐</span>
+            <span className="sparkle-3">💫</span>
+          </div>
+          <div className="right-decoration">
+            <span className="sparkle-1">✨</span>
+            <span className="sparkle-2">⭐</span>
+            <span className="sparkle-3">💫</span>
+          </div>
         </div>
       </header>
 
