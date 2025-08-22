@@ -27,7 +27,7 @@ const Header = () => {
       <header className="header">
         <div className="header-content">
           <h1 className="app-title">WeddingWishCraft</h1>
-          <div className="bengali-subtitle bengali-text">Sheema And Rayhan</div>
+          <div className="bengali-subtitle bengali-text">Sheema And Rayhaan</div>
           <div className="english-subtitle">Send Your Wishes</div>
         </div>
         
